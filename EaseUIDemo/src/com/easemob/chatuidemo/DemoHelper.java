@@ -37,6 +37,7 @@ import com.easemob.chat.TextMessageBody;
 import com.easemob.chatuidemo.db.DemoDBManager;
 import com.easemob.chatuidemo.db.InviteMessgeDao;
 import com.easemob.chatuidemo.db.UserDao;
+import com.easemob.chatuidemo.domain.EmojiconExampleGroupData;
 import com.easemob.chatuidemo.domain.InviteMessage;
 import com.easemob.chatuidemo.domain.InviteMessage.InviteMesageStatus;
 import com.easemob.chatuidemo.domain.RobotUser;
@@ -49,8 +50,11 @@ import com.easemob.chatuidemo.ui.VoiceCallActivity;
 import com.easemob.chatuidemo.utils.PreferenceManager;
 import com.easemob.easeui.R;
 import com.easemob.easeui.controller.EaseUI;
+import com.easemob.easeui.controller.EaseUI.EaseEmojiconInfoProvider;
 import com.easemob.easeui.controller.EaseUI.EaseSettingsProvider;
 import com.easemob.easeui.controller.EaseUI.EaseUserProfileProvider;
+import com.easemob.easeui.domain.EaseEmojicon;
+import com.easemob.easeui.domain.EaseEmojiconGroupEntity;
 import com.easemob.easeui.domain.EaseUser;
 import com.easemob.easeui.model.EaseNotifier;
 import com.easemob.easeui.model.EaseNotifier.EaseNotificationInfoProvider;
@@ -233,6 +237,27 @@ public class DemoHelper {
                 }
             }
         });
+        //设置表情provider
+        easeUI.setEmojiconInfoProvider(new EaseEmojiconInfoProvider() {
+            
+            @Override
+            public EaseEmojicon getEmojiconInfo(String emojiconIdentityCode) {
+                EaseEmojiconGroupEntity data = EmojiconExampleGroupData.getData();
+                for(EaseEmojicon emojicon : data.getEmojiconList()){
+                    if(emojicon.getIdentityCode().equals(emojiconIdentityCode)){
+                        return emojicon;
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            public Map<String, Object> getTextEmojiconMapping() {
+                //返回文字表情emoji文本和图片(resource id或者本地路径)的映射map
+                return null;
+            }
+        });
+        
         //不设置，则使用easeui默认的
         easeUI.getNotifier().setNotificationInfoProvider(new EaseNotificationInfoProvider() {
             

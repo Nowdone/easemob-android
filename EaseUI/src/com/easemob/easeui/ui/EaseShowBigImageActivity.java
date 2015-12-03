@@ -34,7 +34,7 @@ import com.easemob.chat.EMChatManager;
 import com.easemob.easeui.R;
 import com.easemob.easeui.model.EaseImageCache;
 import com.easemob.easeui.utils.EaseLoadLocalBigImgTask;
-import com.easemob.easeui.widget.photoview.PhotoView;
+import com.easemob.easeui.widget.photoview.EasePhotoView;
 import com.easemob.util.EMLog;
 import com.easemob.util.ImageUtils;
 import com.easemob.util.PathUtil;
@@ -46,7 +46,7 @@ import com.easemob.util.PathUtil;
 public class EaseShowBigImageActivity extends EaseBaseActivity {
 	private static final String TAG = "ShowBigImage"; 
 	private ProgressDialog pd;
-	private PhotoView image;
+	private EasePhotoView image;
 	private int default_res = R.drawable.ease_default_image;
 	private String localFilePath;
 	private Bitmap bitmap;
@@ -59,7 +59,7 @@ public class EaseShowBigImageActivity extends EaseBaseActivity {
 		setContentView(R.layout.ease_activity_show_big_image);
 		super.onCreate(savedInstanceState);
 
-		image = (PhotoView) findViewById(R.id.image);
+		image = (EasePhotoView) findViewById(R.id.image);
 		loadLocalPb = (ProgressBar) findViewById(R.id.pb_load_local);
 		default_res = getIntent().getIntExtra("default_image", R.drawable.ease_default_avatar);
 		Uri uri = getIntent().getParcelableExtra("uri");

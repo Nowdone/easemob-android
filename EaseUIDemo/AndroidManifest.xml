@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.easemob.chatuidemo"
-    android:versionCode="23"
-    android:versionName="2.2.3" >
+    android:versionCode="24"
+    android:versionName="2.2.4" >
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="9"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -328,11 +328,19 @@
             </intent-filter>
         </receiver>
         <!-- gcm end -->
+        <service
+   			 android:name="com.umeng.update.net.DownloadingService"
+   			 android:process=":DownloadingService" >
+		</service>
+		<activity 
+		    android:name="com.umeng.update.UpdateDialogActivity"
+		    android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+		</activity>
 
         <!-- 设置环信应用的appkey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
-            android:value="youcheyue#testapp" />
+            android:value="easemob-demo#chatdemoui" />
         <!-- 声明sdk所需的service -->
         <service android:name="com.easemob.chat.EMChatService"
             android:exported="true"
@@ -360,6 +368,7 @@
             android:name="UMENG_APPKEY"
             android:value="53912a3156240b01a7075ed1" >
         </meta-data>
+        <meta-data android:value="easemob" android:name="UMENG_CHANNEL"/>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="3ecea51f560650b1ed8a4b99808f52e8" />
