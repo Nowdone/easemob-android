@@ -22,19 +22,19 @@ import android.widget.ProgressBar;
 
 import com.easemob.easeui.R;
 import com.easemob.easeui.model.EaseImageCache;
-import com.easemob.easeui.widget.photoview.PhotoView;
+import com.easemob.easeui.widget.photoview.EasePhotoView;
 import com.easemob.util.ImageUtils;
 
 public class EaseLoadLocalBigImgTask extends AsyncTask<Void, Void, Bitmap> {
 
 	private ProgressBar pb;
-	private PhotoView photoView;
+	private EasePhotoView photoView;
 	private String path;
 	private int width;
 	private int height;
 	private Context context;
 
-	public EaseLoadLocalBigImgTask(Context context,String path, PhotoView photoView,
+	public EaseLoadLocalBigImgTask(Context context,String path, EasePhotoView photoView,
 			ProgressBar pb, int width, int height) {
 		this.context = context;
 		this.path = path;
